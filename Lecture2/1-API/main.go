@@ -46,8 +46,11 @@ func expression(w http.ResponseWriter, r *http.Request) {
 func handleRequests() {
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/exp", expression)
-	log.Fatal(http.ListenAndServe(":2800", nil))
+	log.Fatal(http.ListenAndServe(":3000", nil))
 }
+
+//http://localhost:2800/exp?exp=add&&num1=10&&num2=20
+
 
 func main() {
 	handleRequests()
