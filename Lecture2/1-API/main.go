@@ -25,20 +25,23 @@ func expression(w http.ResponseWriter, r *http.Request) {
 	switch exp {
 	case "add":
 		result := num1 + num2
-		fmt.Fprintf(w, "result = %d", result)
+		fmt.Fprintf(w, "Add exp result = %d", result)
 
 	case "sub":
 		result := num1 - num2
-		fmt.Fprintf(w, "result = %d", result)
+		fmt.Fprintf(w, "Sub exp result = %d", result)
 
 	case "mul":
 		result := num1 * num2
-		fmt.Fprintf(w, "result = %d", result)
+		fmt.Fprintf(w, "Mul exp result = %d", result)
 
 	case "div":
-		result := num1 / num2
-		fmt.Fprintf(w, "result = %d", result)
+		if num2 != 0 {
 
+			result := num1 / num2
+			fmt.Fprintf(w, "Div exp result = %d", result)
+		}
+		fmt.Fprintf(w, "Div exp cannot run when num2 = 0")
 	}
 
 }
@@ -49,8 +52,7 @@ func handleRequests() {
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }
 
-//http://localhost:2800/exp?exp=add&&num1=10&&num2=20
-
+//http://localhost:3000/exp?exp=add&num1=10&num2=20     : test link
 
 func main() {
 	handleRequests()
